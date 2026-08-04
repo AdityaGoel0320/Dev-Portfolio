@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  exclude: rootscrollgutter, rootcolor;
+ themes: false;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* IE and old Edge */
+body {
+  -ms-overflow-style: none;
+}
