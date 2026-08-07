@@ -8,7 +8,7 @@ const About = () => {
       degree: "B.Tech Computer Science",
       year: "2021 - 2025",
       score: "CGPA 9.2",
-      image: "/images/mait.jpg",
+      image: "/images/mait.png",
       degreeLink: "#",
       marksheetLink: "#",
       description:
@@ -19,7 +19,7 @@ const About = () => {
       degree: "Senior Secondary Education",
       year: "2016 - 2020",
       score: "92%",
-      image: "/images/school.jpg",
+      image: "/images/maaps.png",
       degreeLink: "#",
       marksheetLink: "#",
       description:

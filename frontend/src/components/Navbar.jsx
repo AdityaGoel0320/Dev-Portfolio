@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { twitter, github, linkedin } from '../constant';
 
 const Navbar = () => {
   return (
@@ -19,7 +21,7 @@ const Navbar = () => {
         
         {/* Twitter/X Link */}
         <a 
-          href="https://twitter.com" 
+          href={twitter}
           target="_blank" 
           rel="noopener noreferrer"
           className="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200"
@@ -31,7 +33,7 @@ const Navbar = () => {
 
         {/* GitHub Link */}
         <a 
-          href="https://github.com" 
+          href={github}
           target="_blank" 
           rel="noopener noreferrer"
           className="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200"
@@ -43,7 +45,7 @@ const Navbar = () => {
 
         {/* LinkedIn Link */}
         <a 
-          href="https://linkedin.com" 
+          href={linkedin}
           target="_blank" 
           rel="noopener noreferrer"
           className="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200"
@@ -57,14 +59,14 @@ const Navbar = () => {
         <span className="h-4 w-[1px] bg-white/10 mx-2" />
 
         {/* Action Button CTA */}
-        <a
-          href="#contact"
+        <NavLink
+          to="/contact"
           className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-semibold rounded-lg group bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 hover:text-white text-white focus:ring-4 focus:outline-none focus:ring-purple-800"
         >
           <span className="relative px-3 py-1.5 transition-all ease-in duration-75 bg-[#030712] rounded-md group-hover:bg-opacity-0">
             Hire Me
           </span>
-        </a>
+        </NavLink>
       </nav>
 
     </div>

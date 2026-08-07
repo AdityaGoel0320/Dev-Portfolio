@@ -105,21 +105,22 @@ const FloatingRadialMenu = () => {
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 focus:outline-none flex flex-col items-center gap-1 w-20"
             >
               {/* Permanent Contextual Label */}
-              <span className={`text-[9px] font-mono font-medium tracking-wider uppercase transition-colors duration-300 text-center select-none ${
-                active ? "text-indigo-400 font-bold" : "text-neutral-400"
-              }`}>
-                {item.title}
-              </span>
+             
 
               {/* Icon Container Node */}
               <div
-                className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 border backdrop-blur-xl ${
+                className={`h-fit w-fit p-2  rounded-xl flex items-center justify-center transition-all duration-300 border backdrop-blur-xl ${
                   active
                     ? "bg-gradient-to-br from-indigo-500 to-purple-600 text-white border-indigo-400 shadow-[0_0_20px_rgba(99,102,241,0.4)]"
-                    : "bg-neutral-900/90 text-neutral-400 border-white/10 hover:text-white hover:border-white/20"
+                    : "bg-neutral-900/90 text-neutral-400 border-white hover:text-white hover:border-white/20"
                 }`}
               >
                 <i className={`${item.icon} text-xs`} />
+                 <span className={`text-[10px] py-2font-mono font-medium tracking-wider uppercase transition-colors duration-300 text-center select-none ${
+                active ? "text-white font-bold" : "text-white"
+              }`}>
+                {item.title}
+              </span>
               </div>
             </motion.button>
           );
