@@ -43,11 +43,13 @@ app.post("/api/contact", async (req, res) => {
     console.log("Creating transporter...");
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
         user: process.env.PORTFOLIO_EMAIL,
         pass: process.env.PORTFOLIO_APP_PASSWORD,
-      },
+    },
     });
 
     console.log("Verifying Gmail SMTP...");
