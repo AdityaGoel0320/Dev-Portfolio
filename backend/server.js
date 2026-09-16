@@ -26,12 +26,13 @@ app.get("/", (req, res) => {
   });
 });
 
-// Contact API
 app.post("/api/contact", async (req, res) => {
+  console.log("📩 Contact API Hit");
+  console.log("Body:", req.body);
+
   try {
     const { name, email, phone, message } = req.body;
 
-    // Validation
     if (!name || !email || !phone || !message) {
       return res.status(400).json({
         success: false,
@@ -39,7 +40,8 @@ app.post("/api/contact", async (req, res) => {
       });
     }
 
-    // Gmail SMTP Transport
+    console.log("Creating transporter...");
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -48,70 +50,32 @@ app.post("/api/contact", async (req, res) => {
       },
     });
 
-    // Send Mail
-    await transporter.sendMail({
+    console.log("Verifying Gmail SMTP...");
+    await transporter.verify();
+    console.log("✅ Gmail Connected");
+
+    console.log("Sending email...");
+
+    const info = await transporter.sendMail({
       from: `"Aditya Goel Portfolio" <${process.env.PORTFOLIO_EMAIL}>`,
       to: process.env.PORTFOLIO_EMAIL,
       replyTo: email,
-
       subject: "📩 PORTFOLIO MAIL | New Contact Form Submission",
-
-      html: `
-      <div style="background:#0f172a;padding:30px;font-family:Arial,sans-serif;color:white;">
-        <h2 style="color:#8b5cf6;margin-bottom:20px;">
-          🚀 New Portfolio Contact Request
-        </h2>
-
-        <table style="width:100%;border-collapse:collapse;font-size:15px;">
-          <tr>
-            <td style="padding:10px 0;font-weight:bold;">👤 Name</td>
-            <td>${name}</td>
-          </tr>
-
-          <tr>
-            <td style="padding:10px 0;font-weight:bold;">📧 Email</td>
-            <td>${email}</td>
-          </tr>
-
-          <tr>
-            <td style="padding:10px 0;font-weight:bold;">📱 Phone</td>
-            <td>${phone}</td>
-          </tr>
-        </table>
-
-        <hr style="margin:25px 0;border-color:#334155;" />
-
-        <h3 style="color:#a855f7;">💬 Message</h3>
-
-        <div style="
-          background:#1e293b;
-          padding:18px;
-          border-radius:10px;
-          line-height:1.7;
-          white-space:pre-line;
-        ">
-          ${message}
-        </div>
-
-        <hr style="margin:25px 0;border-color:#334155;" />
-
-        <p style="font-size:13px;color:#94a3b8;">
-          This email was submitted from <strong>Aditya Goel's Portfolio Website</strong>.
-        </p>
-      </div>
-      `,
+      html: `<h2>New Contact</h2><p>${message}</p>`,
     });
 
-    return res.status(200).json({
+    console.log("✅ Email Sent:", info.messageId);
+
+    return res.json({
       success: true,
       message: "Message sent successfully.",
     });
   } catch (error) {
-    console.error("Email Error:", error);
+    console.error("❌ Email Error:", error);
 
     return res.status(500).json({
       success: false,
-      message: "Failed to send email.",
+      message: error.message,
     });
   }
 });
