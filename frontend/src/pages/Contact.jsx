@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PageTransition from "../components/PageTransition";
+import { backendUrl } from "../constant";
 
 const ContactForm = ({
   formData,
@@ -110,7 +111,7 @@ const Contact = () => {
     }));
   };
 
-  const API_BASE_URL = ;
+  const API_BASE_URL = backendUrl ;
 
 
   const handleSubmit = async (e) => {
