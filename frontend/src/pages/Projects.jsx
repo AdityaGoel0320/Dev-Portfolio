@@ -525,10 +525,10 @@ const Projects = () => {
 
         {/* --- Header Deck --- */}
         <div className="mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold border rounded-full bg-white/5 border-white/10 backdrop-blur-md text-indigo-300 mb-5 font-mono">
+          {/* <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold border rounded-full bg-white/5 border-white/10 backdrop-blur-md text-indigo-300 mb-5 font-mono">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
             Repository.Index.Initialized // {PROJECTS_DATA_MATRIX.length} Active Ecosystems
-          </div>
+          </div> */}
 
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-none">
             Architected Works & <br />
@@ -551,10 +551,10 @@ const Projects = () => {
                 if (activeVideoId) handleStopVideo(activeVideoId);
                 setFilter(cat);
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium font-mono border transition-all duration-200 focus:outline-none ${
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium font-mono border transition-all duration-200 focus:outline-none ${
                 filter === cat
                   ? "bg-white text-black border-white shadow-xl"
-                  : "bg-white/[0.01] border-white/[0.04] text-neutral-400 hover:text-white hover:border-white/10"
+                  : "bg-white/[0.01] text-white border-white/10 hover:border-white"
               }`}
             >
               {cat}

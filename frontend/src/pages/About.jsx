@@ -1,5 +1,6 @@
 import React from "react";
 import PageTransition from "../components/PageTransition";
+import Skills from "./Skills";
 
 const About = () => {
   const education = [
@@ -37,7 +38,7 @@ const About = () => {
 
         {/* --- Main Hero Header Section --- */}
         <div className="mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold border rounded-full bg-white/5 border-white/10 backdrop-blur-md text-indigo-300 mb-5">
+          <div className="inline-flex items-center gap-2 px-3 py-1 text-md font-semibold border rounded-full bg-white/5 border-white/10 backdrop-blur-md text-indigo-300 mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
             About Me
           </div>
@@ -57,7 +58,7 @@ const About = () => {
         {/* --- Education Timeline Section --- */}
         <section className="py-4">
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold border rounded-full bg-white/5 border-white/10 backdrop-blur-md text-purple-300 mb-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 text-md font-semibold border rounded-full bg-white/5 border-white/10 backdrop-blur-md text-purple-300 mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
               Education Journey
             </div>
@@ -95,7 +96,7 @@ const About = () => {
                         <img
                           src={edu.image}
                           alt={edu.institution}
-                          className="h-full w-full object-cover opacity-60 filter grayscale contrast-125 transition-all duration-700 group-hover:scale-105 group-hover:opacity-80 group-hover:grayscale-0"
+                          className="h-full w-full object-cover opacity-100 filter contrast-125 transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-transparent to-[#030712]/40" />
                       </div>
@@ -155,6 +156,10 @@ const About = () => {
             </div>
           </div>
         </section>
+
+
+<Skills/>
+        
       </section>
     </PageTransition>
   );

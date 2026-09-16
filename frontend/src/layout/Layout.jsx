@@ -49,7 +49,7 @@ const Layout = () => {
       </header>
 
       {/* Main Viewport Grid/Wrapper */}
-      <main className="flex-1 flex flex-col relative w-full px-4 sm:px-8 lg:px-16 py-8 sm:py-12">
+      <main className="flex-1 flex flex-col relative w-full px-4 sm:px-8 lg:px-16 py-4 ">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}

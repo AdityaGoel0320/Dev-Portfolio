@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 import { ArrowRight, Terminal, Layers, Cpu } from "lucide-react";
 
@@ -31,19 +32,20 @@ const Home = () => {
 
         {/* Call to Actions */}
         <div className="flex flex-col sm:flex-row gap-4 z-10 mb-16 w-full justify-center items-center">
-          <a
-            href="#projects"
+          <NavLink
+          
+            to="projects"
             className="group flex items-center gap-2 px-6 py-3 text-sm font-medium text-black bg-white rounded-xl hover:bg-neutral-200 transition-all duration-200 shadow-lg shadow-white/5 w-full sm:w-auto justify-center"
           >
             View My Work
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-          <a
-            href="#contact"
+          </NavLink>
+          <NavLink
+            to="contact"
             className="flex items-center justify-center px-6 py-3 text-sm font-medium border rounded-xl bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 w-full sm:w-auto"
           >
             Let's Talk
-          </a>
+          </NavLink>
         </div>
 
         {/* Tech Stack Bar */}

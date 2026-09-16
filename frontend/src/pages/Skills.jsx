@@ -137,9 +137,9 @@ const Skills = () => {
 
         {/* --- Header Architecture --- */}
         <div className="mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold border rounded-full bg-white/5 border-white/10 backdrop-blur-md text-indigo-300 mb-5 font-mono">
+          <div className="inline-flex items-center gap-2 px-3 py-1 text-md font-semibold border rounded-full bg-white/5 border-white/10 backdrop-blur-md text-indigo-300 mb-5 font-mono">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-            System.Telemetry.Active
+            Skills
           </div>
 
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-none">

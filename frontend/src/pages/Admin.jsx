@@ -29,11 +29,11 @@ const BACKEND_SERVICES_MATRIX = [
     renderLink: "https://render.com/dashboard/srv-excel-parser-id"
   },
   {
-    id: "rate-limiter-service",
-    appName: "Distributed Rate-Limit Sync Bus",
-    endpoint: "https://limiter-proxy.render.com/healthcheck",
-    repoLink: "https://github.com/yourusername/distributed-rate-limiter",
-    renderLink: "https://render.com/dashboard/srv-rate-limiter-id"
+    id: "imp-link-tool",
+    appName: "Important Link Tool",
+    endpoint: "https://imp-link-tool.onrender.com/health",
+    repoLink: "https://github.com/yourusername/imp-link-tool",
+    renderLink: "https://render.com/dashboard/srv-imp-link-tool-id"
   }
 ];
 
@@ -110,10 +110,10 @@ const Admin = () => {
         const nextTime = prevTime + 1;
         
         // Update metric math linearly across the bar width
-        setGlobalProgress((nextTime / 40) * 100);
+        setGlobalProgress((nextTime / 20) * 100);
 
         // EVAL CONDITION: Trigger clean loop recurrence when countdown completes
-        if (nextTime >= 40) {
+        if (nextTime >= 20) {
           setLoopCount((prevCount) => prevCount + 1);
           triggerGlobalWarmupSequence();
           return 0;
@@ -146,7 +146,7 @@ const Admin = () => {
           </h1>
 
           <p className="mt-5 max-w-3xl text-sm md:text-base leading-relaxed text-neutral-400 font-light">
-            An isolated automated keep-alive engine. The control layer loops every 40 seconds to continuously ping hosting targets, neutralizing background server-sleep protocols entirely without requiring interface interactions.
+            An isolated automated keep-alive engine. The control layer loops every 20 seconds to continuously ping hosting targets, neutralizing background server-sleep protocols entirely without requiring interface interactions.
           </p>
         </div>
 
@@ -159,7 +159,7 @@ const Admin = () => {
             <div className="flex items-center gap-4">
               <div className="flex items-baseline gap-1.5">
                 <span className="text-3xl font-mono font-bold text-white">{timeElapsed}s</span>
-                <span className="text-xs text-neutral-500 font-mono">/ 40s Refresh</span>
+                <span className="text-xs text-neutral-500 font-mono">/ 20s Refresh</span>
               </div>
               <span className="text-neutral-700">|</span>
               <p className="text-xs text-neutral-400 max-w-md font-light">

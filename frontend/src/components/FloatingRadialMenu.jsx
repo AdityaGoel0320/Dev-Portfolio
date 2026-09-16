@@ -3,13 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const menuItems = [
-  { title: "Home", icon: "fas fa-home", route: "/" },
-  { title: "About me", icon: "fas fa-user", route: "/about" },
-  { title: "Skills", icon: "fas fa-code", route: "/skills" },
+  { title: "Contact", icon: "fas fa-envelope", route: "/contact" },
+  { title: "Resume", icon: "fas fa-file-alt", route: "/resume" },
   { title: "Projects", icon: "fas fa-folder-open", route: "/projects" },
   { title: "Experience", icon: "fas fa-briefcase", route: "/experience" },
-  { title: "Resume", icon: "fas fa-file-alt", route: "/resume" },
-  { title: "Contact", icon: "fas fa-envelope", route: "/contact" },
+  { title: "About me", icon: "fas fa-user", route: "/about" },
+  { title: "Home", icon: "fas fa-home", route: "/" },
 ];
 
 const FloatingRadialMenu = () => {
@@ -52,7 +51,7 @@ const FloatingRadialMenu = () => {
       </AnimatePresence>
 
       {/* Main Trigger Anchor Control */}
-      <div className="fixed right-8 bottom-[50vh] translate-y-1/2 z-[9999]">
+      <div className="fixed right-4 bottom-[50vh] translate-y-1/2 z-[9999]">
         
         {/* Radial Generated Cluster Elements */}
         {open && filteredItems.map((item, index) => {
@@ -144,7 +143,7 @@ const FloatingRadialMenu = () => {
           whileTap={{ scale: 0.92 }}
           animate={{ rotate: open ? 135 : 0 }}
           transition={{ type: "spring", stiffness: 600, damping: 25 }}
-          className="relative w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 text-white flex items-center justify-center shadow-[0_8px_32px_rgba(99,102,241,0.3)] border border-white/20 focus:outline-none z-50"
+          className="relative w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 text-white flex items-center justify-center shadow-[0_8px_32px_rgba(99,102,241,0.3)] border border-white/20 focus:outline-none z-500"
         >
           <i className="fas fa-plus text-base" />
         </motion.button>

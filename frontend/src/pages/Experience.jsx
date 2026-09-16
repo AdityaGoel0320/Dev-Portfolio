@@ -11,8 +11,8 @@ const EXPERIENCE_DATA_MATRIX = [
     id: "fulltime",
     type: "job",
     role: "Full-Stack Software Engineer",
-    company: "Current Corporate Organization", 
-    companyLogo: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=80&auto=format&fit=crop&q=60", // Replace with actual logo URL or local path (e.g. /images/company.png)
+    company: "Current Corporate Organization",
+    companyLogo: "/images/compro.png", // Replace with actual logo URL or local path (e.g. /images/company.png)
     duration: "2025 - Present",
     address: "Plot No. 24, Phase-III, Okhla Industrial Area, New Delhi, Delhi 110020",
     icon: "fas fa-briefcase",
@@ -109,9 +109,9 @@ const Experience = () => {
   return (
     <PageTransition>
       <section className="w-full max-w-5xl mx-auto px-4 py-6 relative">
-        
+
         {/* Dynamic Background Adaptive Spotlight (Changes glow based on hovered element) */}
-        <div 
+        <div
           className="absolute top-1/4 right-10 w-[500px] h-[500px] blur-[160px] rounded-full pointer-events-none transition-all duration-700 ease-out -z-10"
           style={{
             backgroundColor: hoveredCard ? hoveredCard.glowColor : "rgba(99,102,241,0.03)"
@@ -120,9 +120,9 @@ const Experience = () => {
 
         {/* --- Top Header Deck --- */}
         <div className="mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold border rounded-full bg-white/5 border-white/10 backdrop-blur-md text-indigo-300 mb-5 font-mono">
+          <div className="inline-flex items-center gap-2 px-3 py-1 text-md font-semibold border rounded-full bg-white/5 border-white/10 backdrop-blur-md text-indigo-300 mb-5 font-mono">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-            Vitals.Engineering.Logs
+            Experience
           </div>
 
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-none">
@@ -148,16 +148,14 @@ const Experience = () => {
             <button
               key={tab.id}
               onClick={() => setFilter(tab.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-medium font-mono border transition-all duration-200 flex items-center gap-2 focus:outline-none ${
-                filter === tab.id
+              className={`px-4 py-2 rounded-xl text-xs font-medium font-mono border transition-all duration-200 flex items-center gap-2 focus:outline-none ${filter === tab.id
                   ? "bg-white text-black border-white shadow-xl"
                   : "bg-white/[0.01] border-white/[0.05] text-neutral-400 hover:text-white hover:border-white/10"
-              }`}
+                }`}
             >
               {tab.label}
-              <span className={`text-[10px] px-1.5 py-0.5 rounded-md ${
-                filter === tab.id ? "bg-neutral-200 text-black" : "bg-white/5 text-neutral-500"
-              }`}>
+              <span className={`text-[10px] px-1.5 py-0.5 rounded-md ${filter === tab.id ? "bg-neutral-200 text-black" : "bg-white/5 text-neutral-500"
+                }`}>
                 {tab.count}
               </span>
             </button>
@@ -165,141 +163,154 @@ const Experience = () => {
         </div>
 
         {/* --- Timeline Grid Array Container --- */}
-        <div className="relative pl-2 sm:pl-12 space-y-10">
-          
-          {/* Vertical Structural Metal Timeline Line */}
-          <div className="absolute left-[33px] sm:left-[53px] top-6 bottom-6 w-[1px] bg-gradient-to-b from-white/[0.15] via-white/[0.05] to-transparent pointer-events-none" />
+        {/* --- Experience Timeline Stepper --- */}
+        <div className="relative">
+          {/* Timeline Line */}
+          <div className="absolute left-6 top-0 h-full w-[1px] bg-gradient-to-b from-indigo-500/50 via-purple-500/30 to-transparent pointer-events-none" />
 
           <AnimatePresence mode="popLayout">
-            {filteredExperiences.map((exp) => (
-              <motion.div
-                key={exp.id}
-                layout
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                onMouseEnter={() => setHoveredCard(exp)}
-                onMouseLeave={() => setHoveredCard(null)}
-                className="relative group"
-              >
-                {/* Timeline Vector Icon Pin */}
-                <div className={`absolute -left-[27px] sm:-left-[43px] top-4 w-9 h-9 rounded-xl border flex items-center justify-center text-xs transition-all duration-500 backdrop-blur-md z-10 ${
-                  hoveredCard?.id === exp.id 
-                    ? `${exp.bgAccent} ${exp.textAccent} ${exp.borderAccent} scale-110 shadow-xl` 
-                    : "bg-neutral-900 border-white/10 text-neutral-500"
-                }`}>
-                  <i className={exp.icon} />
-                </div>
-
-                {/* Main Card Content Chassis */}
-                <div className={`rounded-xl border bg-gradient-to-b from-white/[0.02] to-transparent backdrop-blur-xl p-6 sm:p-8 transition-all duration-500 shadow-2xl relative overflow-hidden ${
-                  hoveredCard?.id === exp.id 
-                    ? "border-white/20 bg-white/[0.03]" 
-                    : "border-white/[0.05]"
-                }`}>
-                  
-                  {/* Subtle Adaptive Linear Glow Edge */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none bg-[radial-gradient(400px_at_var(--x,0px)_var(--y,0px),rgba(255,255,255,0.04),transparent)]" 
-                    onMouseMove={(e) => {
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      e.currentTarget.style.setProperty("--x", `${e.clientX - rect.left}px`);
-                      e.currentTarget.style.setProperty("--y", `${e.clientY - rect.top}px`);
-                    }}
-                  />
-
-                  {/* Header Row Block */}
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-white/[0.06] pb-5 mb-5 relative z-10">
-                    
-                    {/* Left Hand: Identity Profile */}
-                    <div className="flex items-start gap-4">
-                      {/* Company Image Logo Chassis */}
-                      <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 bg-neutral-950 flex-shrink-0 shadow-inner group-hover:border-white/20 transition-colors duration-300">
-                        <img 
-                          src={exp.companyLogo} 
-                          alt={exp.company} 
-                          className="w-full h-full object-cover filter grayscale contrast-115 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 opacity-80 group-hover:opacity-100" 
-                        />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-white transition-colors">
-                          {exp.role}
-                        </h3>
-                        <p className="text-sm font-semibold bg-gradient-to-r from-neutral-200 to-neutral-400 bg-clip-text text-transparent mt-0.5 font-mono">
-                          {exp.company}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Right Hand: Temporal & Structural Coordinates */}
-                    <div className="text-left md:text-right font-mono text-xs space-y-1.5 self-start md:self-auto w-full md:w-auto">
-                      <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border text-[11px] font-bold tracking-wide uppercase shadow-sm ${exp.bgAccent} ${exp.textAccent} ${exp.borderAccent}`}>
-                        {exp.duration}
-                      </div>
-                      <p className="text-[10px] text-neutral-500 font-light leading-normal max-w-xs md:ml-auto">
-                        <i className="fas fa-map-marker-alt text-[9px] mr-1.5 text-neutral-600" />
-                        {exp.address}
-                      </p>
-                    </div>
-
+            <div className="space-y-12">
+              {filteredExperiences.map((exp, index) => (
+                <motion.div
+                  key={exp.id}
+                  layout
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4 }}
+                  onMouseEnter={() => setHoveredCard(exp)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  className="relative pl-14 sm:pl-20"
+                >
+                  {/* Step Number */}
+                  <div
+                    className={`absolute left-0 top-6 flex h-12 w-12 items-center justify-center rounded-xl border backdrop-blur-md font-bold text-sm shadow-lg transition-all duration-300
+              ${hoveredCard?.id === exp.id
+                        ? `${exp.bgAccent} ${exp.borderAccent} ${exp.textAccent}`
+                        : "bg-neutral-900/80 border-white/10 text-indigo-400"
+                      }`}
+                  >
+                    {String(index + 1).padStart(2, "0")}
                   </div>
 
-                  {/* Narrative Body Row */}
-                  <div className="mb-6 relative z-10 pl-1">
-                    <p className="text-sm leading-relaxed text-neutral-300 font-light">
-                      {exp.description}
-                    </p>
-                  </div>
-
-                  {/* Achievements List Block */}
-                  <div className="space-y-3.5 relative z-10 pl-1 mb-6">
-                    <span className="text-[9px] font-mono font-bold tracking-widest text-neutral-500 uppercase block">
-                      Core Codebase Contributions & Architectural Milestones
-                    </span>
-                    <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-400 font-light">
-                      {exp.bullets.map((bullet, bIdx) => (
-                        <li key={bIdx} className="flex items-start gap-3">
-                          <i className={`fas fa-code-commit mt-1 text-[10px] flex-shrink-0 ${exp.textAccent}`} />
-                          <span className="leading-relaxed">{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Skills Earned / Used Chips Deck */}
-                  <div className="pt-5 border-t border-white/[0.04] relative z-10 pl-1">
-                    <span className="text-[9px] font-mono font-bold tracking-widest text-neutral-500 uppercase block mb-2.5">
-                      Technologies Leveraged & Competencies Mastered
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {exp.skillsLearned.map((skill, sIdx) => (
-                        <div 
-                          key={sIdx}
-                          className="px-2.5 py-1 rounded-md bg-neutral-950 border border-white/[0.05] text-neutral-400 text-[10px] font-mono tracking-wide hover:border-white/20 hover:text-white transition-all duration-200"
-                        >
-                          <span className="text-neutral-600 mr-1">#</span>{skill}
+                  {/* Card */}
+                  <div className="group overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-white/10 hover:bg-white/[0.04] shadow-2xl shadow-black/20">
+                    <div
+                      className={`grid grid-cols-1 ${exp.type === "job"
+                          ? "md:grid-cols-[140px_1fr]"
+                          : "md:grid-cols-1"
+                        }`}
+                    >
+                      {/* Company Logo / Image */}
+                      {/* Company Logo (Only for Full-Time Role) */}
+                      {exp.type === "job" && (
+                        <div className="flex items-center justify-center md:border-r border-white/[0.06] bg-gradient-to-br from-white/[0.02] to-transparent p-8 md:w-[140px]">
+                          <div className="w-20 h-20 rounded-2xl bg-white border border-white/10 p-3 shadow-lg flex items-center justify-center group-hover:scale-105 transition-all duration-300">
+                            <img
+                              src={exp.companyLogo}
+                              alt={exp.company}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
                         </div>
-                      ))}
+                      )}
+
+                      {/* Content */}
+                      <div className="p-6 sm:p-8 flex flex-col justify-between">
+                        <div>
+                          {/* Duration + Type */}
+                          <div className="flex flex-wrap items-center gap-2 mb-4">
+                            <span
+                              className={`rounded-lg px-2.5 py-1 text-xs font-semibold tracking-wide border ${exp.bgAccent} ${exp.borderAccent} ${exp.textAccent}`}
+                            >
+                              {exp.duration}
+                            </span>
+
+                            <span className="rounded-lg bg-white/5 border border-white/10 px-2.5 py-1 text-xs font-semibold tracking-wide text-neutral-300 uppercase">
+                              {exp.type}
+                            </span>
+                          </div>
+
+                          {/* Role */}
+                          <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">
+                            {exp.role}
+                          </h3>
+
+                          {/* Company */}
+                          <p className="mt-1 text-sm font-medium text-purple-400 uppercase tracking-wider">
+                            {exp.company}
+                          </p>
+
+                          {/* Location */}
+                          <div className="flex items-center gap-2 mt-3 text-xs text-neutral-500">
+                            <i className="fas fa-location-dot" />
+                            <span>{exp.address}</span>
+                          </div>
+
+                          {/* Description */}
+                          <p className="mt-5 text-sm sm:text-base leading-relaxed text-neutral-400">
+                            {exp.description}
+                          </p>
+
+                          {/* Contributions */}
+                          <div className="mt-6">
+                            <h4 className="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-3 font-semibold">
+                              Key Contributions
+                            </h4>
+
+                            <ul className="space-y-3">
+                              {exp.bullets.map((bullet, i) => (
+                                <li
+                                  key={i}
+                                  className="flex items-start gap-3 text-sm text-neutral-300"
+                                >
+                                  <div
+                                    className={`mt-2 h-2 w-2 rounded-full ${exp.bgAccent}`}
+                                  />
+                                  <span>{bullet}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+
+                        {/* Tech Stack */}
+                        <div className="mt-8 pt-6 border-t border-white/[0.06]">
+                          <h4 className="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-3 font-semibold">
+                            Technologies Used
+                          </h4>
+
+                          <div className="flex flex-wrap gap-2">
+                            {exp.skillsLearned.map((skill, i) => (
+                              <span
+                                key={i}
+                                className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-neutral-300 hover:border-indigo-400/40 hover:text-white transition-all"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                </motion.div>
+              ))}
 
-                </div>
-              </motion.div>
-            ))}
+              {/* Empty State */}
+              {filteredExperiences.length === 0 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="ml-14 rounded-2xl border border-dashed border-white/10 p-10 text-center"
+                >
+                  <p className="text-neutral-500 text-sm">
+                    No experience found for this category.
+                  </p>
+                </motion.div>
+              )}
+            </div>
           </AnimatePresence>
-
-          {/* Fallback Empty Block */}
-          {filteredExperiences.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-12 border border-dashed border-white/10 rounded-xl"
-            >
-              <p className="text-sm text-neutral-500 font-mono">CRITERIA_MATCH_LOG_EMPTY // 404</p>
-            </motion.div>
-          )}
-
         </div>
 
       </section>

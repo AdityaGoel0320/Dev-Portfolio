@@ -20,7 +20,7 @@ const Navbar = () => {
       <nav className="flex items-center gap-1 sm:gap-4">
         
         {/* Twitter/X Link */}
-        <a 
+        {/* <a 
           href={twitter}
           target="_blank" 
           rel="noopener noreferrer"
@@ -29,14 +29,14 @@ const Navbar = () => {
           <i className="fab fa-twitter text-base transition-transform group-hover:scale-110" />
           <span className="hidden md:inline">Twitter</span>
           <i className="fas fa-arrow-up-right-from-square text-[10px] opacity-0 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all text-neutral-500" />
-        </a>
+        </a> */}
 
         {/* GitHub Link */}
         <a 
           href={github}
           target="_blank" 
           rel="noopener noreferrer"
-          className="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200"
+          className="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-white transition-colors duration-200"
         >
           <i className="fab fa-github text-base transition-transform group-hover:scale-110" />
           <span className="hidden md:inline">GitHub</span>
@@ -48,7 +48,7 @@ const Navbar = () => {
           href={linkedin}
           target="_blank" 
           rel="noopener noreferrer"
-          className="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200"
+          className="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-white transition-colors duration-200"
         >
           <i className="fab fa-linkedin-in text-base transition-transform group-hover:scale-110" />
           <span className="hidden md:inline">LinkedIn</span>
