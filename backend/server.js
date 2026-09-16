@@ -2,8 +2,10 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
+import dns from "node:dns";
 
 dotenv.config();
+dns.setDefaultResultOrder("ipv4first");
 
 const app = express();
 const PORT = process.env.PORT || 9000;
@@ -47,21 +49,20 @@ app.post("/api/contact", async (req, res) => {
     }
 
     // Gmail SMTP Transport
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
-      family: 4, // Force IPv4 (fixes Render IPv6 issue)
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
 
-      auth: {
-        user: process.env.PORTFOLIO_EMAIL,
-        pass: process.env.PORTFOLIO_APP_PASSWORD,
-      },
+  auth: {
+    user: process.env.PORTFOLIO_EMAIL,
+    pass: process.env.PORTFOLIO_APP_PASSWORD,
+  },
 
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 10000,
-    });
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 10000,
+});
 
     // Verify SMTP
     await transporter.verify();
