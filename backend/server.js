@@ -8,67 +8,122 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 9000;
 
-// Middleware
+// -------------------- Middleware --------------------
 app.use(
   cors({
-    origin: ["https://aditya-goel-dev.vercel.app", "http://localhost:5173"],
+    origin: [
+      "http://localhost:5173",
+      "https://aditya-goel-dev.vercel.app",
+    ],
+    methods: ["GET", "POST"],
     credentials: true,
   })
 );
 
 app.use(express.json());
 
-// Reuse single transporter instance using Port 587
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false, // TLS via STARTTLS (Faster & rarely blocked by host providers)
-  auth: {
-    user: process.env.PORTFOLIO_EMAIL,
-    pass: process.env.PORTFOLIO_APP_PASSWORD,
-  },
-  // Optional: connection timeout limit to prevent hanging forever
-  connectionTimeout: 10000, 
-});
-
-// Health Check
+// -------------------- Health Check --------------------
 app.get("/", (req, res) => {
-  res.json({
+  res.status(200).json({
     success: true,
-    message: "Portfolio Contact API is running 🚀",
+    message: "🚀 Portfolio Contact API is running.",
   });
 });
 
+// -------------------- Contact API --------------------
 app.post("/api/contact", async (req, res) => {
+  console.log("📩 Contact API Hit");
+  console.log("Body:", req.body);
+
   try {
     const { name, email, phone, message } = req.body;
 
+    // Validate input
     if (!name || !email || !phone || !message) {
       return res.status(400).json({
         success: false,
-        message: "All fields are required.",
+        message: "Please fill all required fields.",
       });
     }
 
-    const mailOptions = {
+    // Gmail SMTP Transport
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      family: 4, // Force IPv4 (fixes Render IPv6 issue)
+
+      auth: {
+        user: process.env.PORTFOLIO_EMAIL,
+        pass: process.env.PORTFOLIO_APP_PASSWORD,
+      },
+
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
+    });
+
+    // Verify SMTP
+    await transporter.verify();
+    console.log("✅ Gmail SMTP Connected");
+
+    // Send Email
+    const info = await transporter.sendMail({
       from: `"Aditya Goel Portfolio" <${process.env.PORTFOLIO_EMAIL}>`,
       to: process.env.PORTFOLIO_EMAIL,
       replyTo: email,
-      subject: `📩 PORTFOLIO MAIL | New Message from ${name}`,
-      html: `
-        <h3>New Contact Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    };
 
-    const info = await transporter.sendMail(mailOptions);
+      subject: "📩 PORTFOLIO MAIL | New Contact Form Submission",
+
+      html: `
+      <div style="background:#0f172a;padding:30px;font-family:Arial,sans-serif;color:#ffffff;">
+        <h2 style="color:#8b5cf6;margin-bottom:20px;">
+          🚀 New Portfolio Contact Request
+        </h2>
+
+        <table style="width:100%;border-collapse:collapse;font-size:15px;">
+          <tr>
+            <td style="padding:10px 0;font-weight:bold;">👤 Name</td>
+            <td>${name}</td>
+          </tr>
+
+          <tr>
+            <td style="padding:10px 0;font-weight:bold;">📧 Email</td>
+            <td>${email}</td>
+          </tr>
+
+          <tr>
+            <td style="padding:10px 0;font-weight:bold;">📱 Phone</td>
+            <td>${phone}</td>
+          </tr>
+        </table>
+
+        <hr style="margin:25px 0;border-color:#334155;" />
+
+        <h3 style="color:#a855f7;">💬 Message</h3>
+
+        <div style="
+          background:#1e293b;
+          padding:18px;
+          border-radius:10px;
+          line-height:1.7;
+          white-space:pre-line;
+        ">
+${message}
+        </div>
+
+        <hr style="margin:25px 0;border-color:#334155;" />
+
+        <p style="font-size:13px;color:#94a3b8;">
+          This email was submitted from <strong>Aditya Goel's Portfolio Website</strong>.
+        </p>
+      </div>
+      `,
+    });
+
     console.log("✅ Email Sent:", info.messageId);
 
-    return res.json({
+    return res.status(200).json({
       success: true,
       message: "Message sent successfully.",
     });
@@ -77,12 +132,13 @@ app.post("/api/contact", async (req, res) => {
 
     return res.status(500).json({
       success: false,
-      message: "Failed to send email. Please try again later.",
+      message: error.message || "Failed to send email.",
     });
   }
 });
 
-// Start Server
+// -------------------- Start Server --------------------
 app.listen(PORT, () => {
-  console.log(`🚀 Portfolio Backend Running on http://localhost:${PORT}`);
+  console.log(`🚀 Portfolio Backend Running`);
+  console.log(`🌐 Server listening on port ${PORT}`);
 });
