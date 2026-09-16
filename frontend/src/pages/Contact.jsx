@@ -11,6 +11,7 @@ const ContactForm = ({
   return (
     <form
       onSubmit={handleSubmit}
+      autoComplete="off"
       className={compact ? "space-y-4" : "space-y-5"}
     >
       <div className="relative">
@@ -18,6 +19,7 @@ const ContactForm = ({
         <input
           type="text"
           name="name"
+          autoComplete="new-password"
           required
           value={formData.name}
           onChange={handleChange}
@@ -32,6 +34,7 @@ const ContactForm = ({
         <input
           type="email"
           name="email"
+          autoComplete="new-password"
           required
           value={formData.email}
           onChange={handleChange}
@@ -43,19 +46,19 @@ const ContactForm = ({
 
       <div className="relative">
         <i className="fas fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500 text-sm" />
-   <input
-  type="tel"
-  name="phone"
-  required
-  pattern="[6-9][0-9]{9}"
-  maxLength={10}
-  value={formData.phone}
-  onChange={handleChange}
-  placeholder="Phone Number"
-  className={`w-full rounded-xl border border-white/10 bg-white/5 pl-11 pr-4 text-white outline-none transition-all duration-300 focus:border-indigo-500 focus:bg-white/[0.08] focus:ring-4 focus:ring-indigo-500/10 ${
-    compact ? "h-11" : "h-14"
-  }`}
-/>
+        <input
+          type="tel"
+          name="phone"
+          autoComplete="new-password"
+          required
+          pattern="[6-9][0-9]{9}"
+          maxLength={10}
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="Phone Number"
+          className={`w-full rounded-xl border border-white/10 bg-white/5 pl-11 pr-4 text-white outline-none transition-all duration-300 focus:border-indigo-500 focus:bg-white/[0.08] focus:ring-4 focus:ring-indigo-500/10 ${compact ? "h-11" : "h-14"
+            }`}
+        />
       </div>
 
       <div className="relative">
@@ -107,13 +110,16 @@ const Contact = () => {
     }));
   };
 
+  const API_BASE_URL = ;
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       setLoading(true);
 
-      const response = await fetch("/api/contact", {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -123,21 +129,21 @@ const Contact = () => {
 
       const data = await response.json();
 
-      if (data.success) {
-        alert("✅ Message sent successfully!");
-
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
-      } else {
-        alert(data.message);
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to send message.");
       }
+
+      alert("✅ Message sent successfully!");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
     } catch (error) {
-      console.error(error);
-      alert("❌ Something went wrong.");
+      console.error("Contact Form Error:", error);
+      alert(error.message || "❌ Something went wrong.");
     } finally {
       setLoading(false);
     }
