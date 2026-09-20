@@ -30,6 +30,11 @@ const FloatingRadialMenu = () => {
     navigate(route);
     setOpen(false);
     setSearch("");
+    window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant",
+  });
   };
 
   return (

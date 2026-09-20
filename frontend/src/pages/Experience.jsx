@@ -1,101 +1,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "../components/PageTransition";
+import { data } from "../data/experience";
 
 // =========================================================================
 // CENTRAL EXPERIENCE DATA MATRIX (JSON SCHEMA)
 // Easily scale up your profile! Add company logos, full addresses, and tags.
 // =========================================================================
-const EXPERIENCE_DATA_MATRIX = [
-  {
-    id: "fulltime",
-    type: "job",
-    role: "Full-Stack Software Engineer",
-    company: "Current Corporate Organization",
-    companyLogo: "/images/compro.png", // Replace with actual logo URL or local path (e.g. /images/company.png)
-    duration: "2025 - Present",
-    address: "Plot No. 24, Phase-III, Okhla Industrial Area, New Delhi, Delhi 110020",
-    icon: "fas fa-briefcase",
-    themeColor: "indigo",
-    textAccent: "text-indigo-400",
-    bgAccent: "bg-indigo-500/10",
-    borderAccent: "border-indigo-500/20",
-    glowColor: "rgba(99,102,241,0.15)",
-    description: "Spearheading enterprise web platform lifecycles and highly reliable cloud infrastructure models within a fast-paced agile production environment.",
-    bullets: [
-      "Architecting distributed micro-frontend panels and scalable asynchronous server environments using Angular, React, and Node.js backend networks.",
-      "Optimizing processing event pipelines to prevent main-thread visual lockups and ensure flawless rendering across varying bandwidth tiers.",
-      "Structuring isolated test criteria and performance monitoring routines safeguarding core application workflows from data mutation bugs."
-    ],
-    skillsLearned: ["Angular", "Node.js", "System Design", "Asynchronous Programming", "Microservices"]
-  },
-  {
-    id: "intern-4",
-    type: "internship",
-    role: "Backend & Cloud Engineer Intern",
-    company: "Fintech Startup Systems",
-    companyLogo: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=80&auto=format&fit=crop&q=60",
-    duration: "Late 2024",
-    address: "Tech Hub Tower, Sector 62, Noida, Uttar Pradesh 201301",
-    icon: "fas fa-laptop-code",
-    themeColor: "purple",
-    textAccent: "text-purple-400",
-    bgAccent: "bg-purple-500/10",
-    borderAccent: "border-purple-500/20",
-    glowColor: "rgba(168,85,247,0.15)",
-    description: "Focused primarily on cloud infrastructure automation, fault-tolerant network topologies, and microservice error recovery channels.",
-    bullets: [
-      "Engineered clean serverless application model topologies routing live event streams straight into automated background compute threads.",
-      "Configured programmatic dead-letter queues (DLQ) paired with automated failure alerts protecting upstream transaction flows from event drops.",
-      "Authored strict security resource blueprints preventing cross-tenant permissions leakage across production S3 data buckets."
-    ],
-    skillsLearned: ["AWS Lambda", "AWS SAM", "Amazon SNS/SQS", "Cloud Security", "DevOps"]
-  },
-  {
-    id: "intern-3",
-    type: "internship",
-    role: "Frontend Engineering Intern",
-    company: "SaaS Product Studio",
-    companyLogo: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=80&auto=format&fit=crop&q=60",
-    duration: "Mid 2024",
-    address: "DLF Cyber City, Phase 3, Sector 24, Gurugram, Haryana 122002",
-    icon: "fas fa-code",
-    themeColor: "amber",
-    textAccent: "text-amber-400",
-    bgAccent: "bg-amber-500/10",
-    borderAccent: "border-amber-500/20",
-    glowColor: "rgba(245,158,11,0.15)",
-    description: "Deployed performance optimizations across customer-facing application spaces, ensuring fluid interactivity configurations.",
-    bullets: [
-      "Built multi-threaded client-side spreadsheet analysis tooling offloading intensive data operations safely into background Web Worker threads.",
-      "Designed slick layout components utilizing utility-first styles guaranteeing flawless compatibility on mobile configurations.",
-      "Connected REST architectural layers with internal state hooks to maintain ultra-fast state synchronization cycles."
-    ],
-    skillsLearned: ["React.js", "Tailwind CSS", "Web Workers", "UI/UX Design", "REST APIs"]
-  },
-  {
-    id: "hackathon",
-    type: "event",
-    role: "Hackathon Finalist & OS Contributor",
-    company: "Hacktoberfest & Major League Hacking",
-    companyLogo: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=80&auto=format&fit=crop&q=60",
-    duration: "2022 - Present",
-    address: "Maharaja Agrasen Institute of Technology Campus, Delhi, India",
-    icon: "fas fa-trophy",
-    themeColor: "rose",
-    textAccent: "text-rose-400",
-    bgAccent: "bg-rose-500/10",
-    borderAccent: "border-rose-500/20",
-    glowColor: "rgba(244,63,94,0.15)",
-    description: "Competing heavily in intense collegiate building sprints while actively managing upstream feature proposals inside popular open-source repos.",
-    bullets: [
-      "Coordinated with multi-disciplinary engineering crews to blueprint and deploy working full-stack MVPs within narrow 36-hour timelines.",
-      "Shipped multiple checked pull-requests to global code engines optimizing data processing modules during open Hacktoberfest runs.",
-      "Acted as repository controller handling automated build environments, conflicts troubleshooting, and staging runs."
-    ],
-    skillsLearned: ["Git/GitHub", "Open Source", "Team Collaboration", "Rapid Prototyping", "Problem Solving"]
-  }
-];
+const EXPERIENCE_DATA_MATRIX = data ;
 
 const Experience = () => {
   const [filter, setFilter] = useState("all");
@@ -140,10 +52,10 @@ const Experience = () => {
         {/* --- Navigation Filter Command Deck --- */}
         <div className="flex flex-wrap items-center gap-2 mb-12 pb-4 border-b border-white/[0.06]">
           {[
-            { id: "all", label: "All Logs", count: EXPERIENCE_DATA_MATRIX.length },
+            { id: "all", label: "All", count: EXPERIENCE_DATA_MATRIX.length },
             { id: "job", label: "Full-Time Roles", count: EXPERIENCE_DATA_MATRIX.filter(e => e.type === "job").length },
             { id: "internship", label: "Internships", count: EXPERIENCE_DATA_MATRIX.filter(e => e.type === "internship").length },
-            { id: "event", label: "Hackathons", count: EXPERIENCE_DATA_MATRIX.filter(e => e.type === "event").length }
+            // { id: "event", label: "Hackathons", count: EXPERIENCE_DATA_MATRIX.filter(e => e.type === "event").length }
           ].map((tab) => (
             <button
               key={tab.id}
