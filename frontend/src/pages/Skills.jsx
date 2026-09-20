@@ -110,22 +110,16 @@ const Skills = () => {
               >
                 <div>
                   {/* Code System Frame Header */}
-                  <div className="flex items-center justify-between pb-5 mb-6 border-b border-white/[0.06]">
-                    <div className="flex items-center gap-2 font-mono text-[10px] text-neutral-500 tracking-widest uppercase">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      Inspector Layer: // {activeCategory.id}
-                    </div>
-                    <span className="font-mono text-[10px] text-neutral-600">SYS_REV_2026</span>
-                  </div>
+             
 
                   {/* Technology Logo Grid Row */}
                   <div className="mb-6">
                     <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-3">
                       Core Technology Stack Modules
                     </span>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div className="flex justify-start items-center flex-wrap gap-3">
                       {activeCategory.logos.map((logo, lIdx) => (
-                        <div key={lIdx} className="flex items-center gap-2.5 p-2.5 rounded-lg border border-white/[0.04] bg-white/[0.01] hover:border-white/10 transition-all duration-200">
+                        <div key={lIdx} className="flex items-center gap-2.5 p-2.5 px-4 border rounded-lg  border-white/[0.04] bg-white/[0.01] hover:border-white/10 transition-all duration-200">
                           <div className="w-7 h-7 rounded bg-neutral-950 flex items-center justify-center text-sm border border-white/5">
                             <i className={logo.class} />
                           </div>
@@ -193,10 +187,7 @@ const Skills = () => {
 
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-white/[0.04] flex items-center justify-between font-mono text-[10px] text-neutral-600">
-                  <span>Connection: Secure (TLS_1.3)</span>
-                  <span>STATUS: 200_OK</span>
-                </div>
+          
               </motion.div>
             </AnimatePresence>
           </div>

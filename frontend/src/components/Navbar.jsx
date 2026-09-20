@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FiArrowUpRight } from 'react-icons/fi';
 import { twitter, github, linkedin } from '../constant';
 
 const Navbar = () => {
@@ -19,18 +21,6 @@ const Navbar = () => {
       {/* Modern SaaS Navigation Links */}
       <nav className="flex items-center gap-1 sm:gap-4">
         
-        {/* Twitter/X Link */}
-        {/* <a 
-          href={twitter}
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200"
-        >
-          <i className="fab fa-twitter text-base transition-transform group-hover:scale-110" />
-          <span className="hidden md:inline">Twitter</span>
-          <i className="fas fa-arrow-up-right-from-square text-[10px] opacity-0 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all text-neutral-500" />
-        </a> */}
-
         {/* GitHub Link */}
         <a 
           href={github}
@@ -38,9 +28,9 @@ const Navbar = () => {
           rel="noopener noreferrer"
           className="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-white transition-colors duration-200"
         >
-          <i className="fab fa-github text-base transition-transform group-hover:scale-110" />
+          <FaGithub className="text-base transition-transform group-hover:scale-110" />
           <span className="hidden md:inline">GitHub</span>
-          <i className="fas fa-arrow-up-right-from-square text-[10px] opacity-0 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all text-neutral-500" />
+          <FiArrowUpRight className="text-xs opacity-0 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all text-neutral-500" />
         </a>
 
         {/* LinkedIn Link */}
@@ -50,9 +40,9 @@ const Navbar = () => {
           rel="noopener noreferrer"
           className="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-white transition-colors duration-200"
         >
-          <i className="fab fa-linkedin-in text-base transition-transform group-hover:scale-110" />
+          <FaLinkedinIn className="text-base transition-transform group-hover:scale-110" />
           <span className="hidden md:inline">LinkedIn</span>
-          <i className="fas fa-arrow-up-right-from-square text-[10px] opacity-0 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all text-neutral-500" />
+          <FiArrowUpRight className="text-xs opacity-0 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all text-neutral-500" />
         </a>
 
         {/* Subtle Divider Line */}
