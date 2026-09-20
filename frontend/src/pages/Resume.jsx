@@ -34,7 +34,7 @@ const Resume = () => {
 
           
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6 relative z-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6 relative z-10 mb-4 ">
 
             {/* Open in Drive */}
             <a
@@ -52,7 +52,7 @@ const Resume = () => {
               href={`https://drive.google.com/uc?export=download&id=${GOOGLE_DRIVE_FILE_ID}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 px-5 py-3 text-xs font-semibold text-neutral-200 hover:text-white transition-all duration-200 focus:outline-none mb-4 "
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 px-5 py-3 text-xs font-semibold text-neutral-200 hover:text-white transition-all duration-200 focus:outline-none  "
             >
               <i className="fas fa-download text-[10px] text-neutral-400" />
               Download PDF
