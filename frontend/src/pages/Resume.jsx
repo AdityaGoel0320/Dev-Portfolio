@@ -4,7 +4,7 @@ import PageTransition from "../components/PageTransition";
 // =========================================================================
 // GOOGLE DRIVE RESUME CONFIGURATION
 // =========================================================================
-const GOOGLE_DRIVE_FILE_ID = "1a4KkieTkJpbSqNmam3Pvo_1UaK7OAM5m";
+const GOOGLE_DRIVE_FILE_ID = "1Hsp7qen0L0F_3RyctB4JOIJrzjffYvxC";
 
 const RESUME_VIEW_LINK = `https://drive.google.com/file/d/${GOOGLE_DRIVE_FILE_ID}/view`;
 const RESUME_PREVIEW_EMBED = `https://drive.google.com/file/d/${GOOGLE_DRIVE_FILE_ID}/preview`;

@@ -8,6 +8,7 @@ import data from "../data/project";
 // 20 high-level architectures with full color and advanced controllers
 // =========================================================================
 const PROJECTS_DATA_MATRIX = data;
+const UNIQUE_CATEGORIES = ["All", ...new Set(PROJECTS_DATA_MATRIX.map((project) => project.category))];
 
 const Projects = () => {
   const [filter, setFilter] = useState("All");
@@ -16,8 +17,6 @@ const Projects = () => {
 
   const videoRefs = useRef({}); // Stores instance references for runtime control mapping
   const containerRefs = useRef({}); // Used to safely trigger element viewport full-screen expansions
-
-  const uniqueCategories = ["All", ...new Set(PROJECTS_DATA_MATRIX.map((p) => p.category))];
 
   const filteredProjects = PROJECTS_DATA_MATRIX.filter((project) => {
     if (filter === "All") return true;
@@ -92,7 +91,7 @@ const Projects = () => {
 
         {/* --- Interactive Dynamic Filters --- */}
         <div className="flex flex-wrap items-center gap-1.5 mb-12 pb-5 border-b border-white/[0.06]">
-          {uniqueCategories.map((cat) => (
+          {UNIQUE_CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => {
@@ -143,6 +142,8 @@ const Projects = () => {
                             <img 
                               src={project.thumbnail} 
                               alt={project.title} 
+                              loading="lazy"
+                              decoding="async"
                               className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[1.01]" 
                             />
                             <div className="absolute inset-0 flex items-center justify-center bg-neutral-950/10">
@@ -164,6 +165,7 @@ const Projects = () => {
                             <video 
                               ref={(el) => (videoRefs.current[project.id] = el)}
                               src={project.videoDemo} 
+                              preload="none"
                               loop 
                               muted 
                               playsInline 

@@ -108,9 +108,9 @@ const About = () => {
                             <span className="rounded-lg bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 text-xs font-semibold tracking-wide text-indigo-300">
                               {edu.year}
                             </span>
-                            <span className="rounded-lg bg-white/5 border border-white/10 px-2.5 py-1 text-xs font-semibold tracking-wide text-neutral-300">
+                            {/* <span className="rounded-lg bg-white/5 border border-white/10 px-2.5 py-1 text-xs font-semibold tracking-wide text-neutral-300">
                               {edu.score}
-                            </span>
+                            </span> */}
                           </div>
 
                           <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-indigo-300 transition-colors">
@@ -127,7 +127,7 @@ const About = () => {
                         </div>
 
                         {/* Interactive Credentials Interface Row */}
-                        <div className="mt-6 pt-6 border-t border-white/[0.04] flex flex-wrap gap-3">
+                        {/* <div className="mt-6 pt-6 border-t border-white/[0.04] flex flex-wrap gap-3">
                           <a
                             href={edu.degreeLink}
                             target="_blank"
@@ -145,7 +145,7 @@ const About = () => {
                           >
                             <i className="fas fa-file-invoice text-neutral-500 group-hover:text-neutral-300" /> View Marksheet
                           </a>
-                        </div>
+                        </div> */}
                       </div>
 
                     </div>
